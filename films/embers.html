@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embers - Jacob Watkinson</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="brand">
+        <h1>Jacob Watkinson</h1>
+        <p class="tagline">Moving Image Works</p>
+    </div>
+    <button class="menu-button" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</header>
+
+<nav class="nav" id="menu">
+    <a href="../index.html" class="nav-link">Home</a>
+    <a href="../about.html" class="nav-link">About</a>
+    <a href="../workshops.html" class="nav-link">Workshops</a>
+    <div class="works-group">
+        <span class="group-title">Works</span>
+        <a href="../films/void.html">Void</a>
+        <a href="../films/iowa-i.html">IOWA I</a>
+        <a href="../films/bogus.html">Bogus</a>
+        <a href="../films/unearthed.html">Unearthed</a>
+        <a href="../films/embers.html">Embers</a>
+    </div>
+</nav>
+
+<main class="film-page">
+    
+    <div class="film-header">
+        <h1>Embers</h1>
+        <p class="film-year">2021</p>
+    </div>
+
+    <div class="film-video">
+        <iframe 
+            src="https://www.youtube.com/embed/0qIoUTTxSXk" 
+            width="100%" 
+            height="100%" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <div class="film-gallery">
+        <div class="gallery-grid">
+            <img src="../images/embers-1.jpg" alt="Still from Embers" class="gallery-item">
+            <img src="../images/embers-2.jpg" alt="Still from Embers" class="gallery-item">
+            <img src="../images/embers-3.jpg" alt="Still from Embers" class="gallery-item">
+            <img src="../images/embers-4.jpg" alt="Still from Embers" class="gallery-item">
+            <img src="../images/embers-5.jpg" alt="Still from Embers" class="gallery-item">
+            <img src="../images/embers-6.jpg" alt="Still from Embers" class="gallery-item">
+            <img src="../images/embers-7.jpg" alt="Still from Embers" class="gallery-item">
+            <img src="../images/embers-8.jpg" alt="Still from Embers" class="gallery-item">
+        </div>
+    </div>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close gallery">×</button>
+        <div class="lightbox-inner">
+            <button class="lightbox-control lightbox-prev" id="lightboxPrev" aria-label="Previous image">‹</button>
+            <img src="" alt="" class="lightbox-image" id="lightboxImage">
+            <button class="lightbox-control lightbox-next" id="lightboxNext" aria-label="Next image">›</button>
+        </div>
+        <div class="lightbox-indicator" id="lightboxIndicator"></div>
+    </div>
+
+    <div class="film-details">
+        <div class="film-section">
+            <h2>Synopsis</h2>
+            <p>
+                A collaboration with the Sound Artist Callum Rawe, Embers is a tragic and crushing journey through a deteriorating mind. The film is comprised of analogue film, decayed through various means by the filmmaker to create an interplay between the longing figures of the images and the entropic processes that consume them, culminating in an inevitable space where all structure and representation crumbles into dust.
+            </p>
+        </div>
+
+        <div class="film-section">
+            <h2>Credits</h2>
+            <ul>
+                <li><strong>Director:</strong> Jacob Watkinson</li>
+                <li><strong>Sound:</strong> Callum Rawe</li>
+                <li><strong>Year:</strong> 2021</li>
+                <li><strong>Duration:</strong> [XX min]</li>
+            </ul>
+        </div>
+
+        <div class="film-section">
+            <h2>Festival Screenings</h2>
+            <ul>
+                <li>Darkroom Festival</li>
+                <li>APEX Film Awards</li>
+                <li>Ribalta Experimental Film Festival</li>
+                <li>Hallucinea Film Festival</li>
+                <li>Fisura International Festival of Experimental Film &amp; Video</li>
+                <li>Alternative Night of Experimental Film</li>
+                <li>Pune Short Film Festival</li>
+                <li>Cortoscopia Short Film Festival</li>
+                <li>Exploding Cinema</li>
+                <li>Euphrasie — The Undercroft Gallery</li>
+            </ul>
+        </div>
+        
+        <div class="navigation-links">
+            <a href="../index.html">← Back to Works</a>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    <p>© 2026 Jacob Watkinson</p>
+</footer>
+
+<script>
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
+    
+    if (menuBtn && menu) {
+        menuBtn.addEventListener('click', function() {
+            const active = menuBtn.classList.toggle('active');
+            menu.classList.toggle('active');
+            menuBtn.setAttribute('aria-expanded', active ? 'true' : 'false');
+        });
+        
+        const menuLinks = menu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                menuBtn.classList.remove('active');
+                menu.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxIndicator = document.getElementById('lightboxIndicator');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    const images = Array.from(galleryItems).map(img => ({ src: img.src, alt: img.alt }));
+    let currentIndex = 0;
+    let touchStartX = 0;
+
+    function updateLightbox(index) {
+        const image = images[index];
+        lightboxImage.src = image.src;
+        lightboxImage.alt = image.alt;
+        lightboxIndicator.textContent = `${index + 1} / ${images.length}`;
+        currentIndex = index;
+    }
+
+    function openLightbox(index) {
+        if (!lightbox) return;
+        updateLightbox(index);
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImage.src = '';
+    }
+
+    function showPrevious() {
+        updateLightbox((currentIndex - 1 + images.length) % images.length);
+    }
+
+    function showNext() {
+        updateLightbox((currentIndex + 1) % images.length);
+    }
+
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => openLightbox(index));
+    });
+
+    if (lightboxPrev) lightboxPrev.addEventListener('click', event => { event.stopPropagation(); showPrevious(); });
+    if (lightboxNext) lightboxNext.addEventListener('click', event => { event.stopPropagation(); showNext(); });
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightbox) {
+        lightbox.addEventListener('click', event => {
+            if (event.target === lightbox) closeLightbox();
+        });
+    }
+
+    document.addEventListener('keydown', event => {
+        if (!lightbox || !lightbox.classList.contains('active')) return;
+        if (event.key === 'Escape') closeLightbox();
+        if (event.key === 'ArrowLeft') showPrevious();
+        if (event.key === 'ArrowRight') showNext();
+    });
+
+    if (lightbox) {
+        lightbox.addEventListener('touchstart', event => {
+            touchStartX = event.changedTouches[0].clientX;
+        });
+
+        lightbox.addEventListener('touchend', event => {
+            const touchEndX = event.changedTouches[0].clientX;
+            const diff = touchEndX - touchStartX;
+            if (Math.abs(diff) > 40) {
+                if (diff > 0) showPrevious();
+                else showNext();
+            }
+        });
+    }
+</script>
+</body>
+</html>

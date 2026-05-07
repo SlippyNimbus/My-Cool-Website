@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Jacob Watkinson</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="brand">
+        <h1>Jacob Watkinson</h1>
+        <p class="tagline">Moving Image Works</p>
+    </div>
+    <button class="menu-button" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</header>
+
+<nav class="nav" id="menu">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link active">About</a>
+    <a href="workshops.html" class="nav-link">Workshops</a>
+    <div class="works-group">
+        <span class="group-title">Works</span>
+        <a href="films/void.html">Void</a>
+        <a href="films/iowa-i.html">IOWA I</a>
+        <a href="films/bogus.html">Bogus</a>
+        <a href="films/unearthed.html">Unearthed</a>
+        <a href="films/embers.html">Embers</a>
+    </div>
+</nav>
+
+<main class="about-content">
+    <h2>About</h2>
+    
+    <p>
+        Jacob Watkinson is a filmmaker focused on creating compelling moving image works. 
+        With experience across various formats and styles, his work explores themes of 
+        narrative, visual composition, and storytelling.
+    </p>
+    
+    <h3>Background</h3>
+    <p>
+        [Add your background and experience here]
+    </p>
+    
+    <h3>Practice</h3>
+    <p>
+        [Describe your artistic practice and approach to filmmaking]
+    </p>
+
+    <h3>Contact</h3>
+    <p>
+        For inquiries, reach out at: <a href="mailto:your.email@example.com">your.email@example.com</a>
+    </p>
+</main>
+
+<footer>
+    <p>© 2026 Jacob Watkinson</p>
+</footer>
+
+<script>
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
+    
+    menuBtn.addEventListener('click', function() {
+        menuBtn.classList.toggle('active');
+        menu.classList.toggle('active');
+    });
+    
+    const menuLinks = menu.querySelectorAll('a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            menuBtn.classList.remove('active');
+            menu.classList.remove('active');
+        });
+    });
+</script>
+
+</body>
+</html>

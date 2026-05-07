@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshops - Jacob Watkinson</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="brand">
+        <h1>Jacob Watkinson</h1>
+        <p class="tagline">Moving Image Works</p>
+    </div>
+    <button class="menu-button" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</header>
+
+<nav class="nav" id="menu">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="workshops.html" class="nav-link active">Workshops</a>
+    <div class="works-group">
+        <span class="group-title">Works</span>
+        <a href="films/void.html">Void</a>
+        <a href="films/iowa-i.html">IOWA I</a>
+        <a href="films/bogus.html">Bogus</a>
+        <a href="films/unearthed.html">Unearthed</a>
+        <a href="films/embers.html">Embers</a>
+    </div>
+</nav>
+
+<main class="about-content">
+    <h2>Workshops</h2>
+    <p>
+        These workshops document the cameraless animation and experimental film sessions hosted historically by Jacob Watkinson.
+        Each session explored material animation, direct film techniques, and alternative image-making processes without a camera.
+    </p>
+
+    <h3>Workshop Topics</h3>
+    <ul>
+        <li>Direct animation on 16mm and Super 8 film</li>
+        <li>Photogram and chemigram-based imagery</li>
+        <li>Hand-drawn and painted animation on film leader</li>
+        <li>Experimental photographic motion through light and shadow</li>
+        <li>Collaborative material image-making and projection experiments</li>
+    </ul>
+
+    <h3>Past Sessions</h3>
+    <p>
+        Past workshops have been hosted in gallery and community spaces, focusing on playful, hands-on making while also introducing formal and conceptual processes from experimental cinema.
+    </p>
+
+    <h3>Approach</h3>
+    <p>
+        The workshops emphasise process over product. Participants are guided through a series of material experiments, then encouraged to develop personal imagery using both analogue and hybrid techniques.
+    </p>
+
+    <h3>Contact</h3>
+    <p>
+        For future workshop inquiries or collaborations, reach out at: <a href="mailto:your.email@example.com">your.email@example.com</a>
+    </p>
+</main>
+
+<footer>
+    <p>© 2026 Jacob Watkinson</p>
+</footer>
+
+<script>
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
+    
+    if (menuBtn && menu) {
+        menuBtn.addEventListener('click', function() {
+            const active = menuBtn.classList.toggle('active');
+            menu.classList.toggle('active');
+            menuBtn.setAttribute('aria-expanded', active ? 'true' : 'false');
+        });
+        
+        const menuLinks = menu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                menuBtn.classList.remove('active');
+                menu.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+</script>
+</body>
+</html>
